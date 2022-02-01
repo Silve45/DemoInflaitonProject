@@ -99,4 +99,3 @@ public class InflationCalculator {
 
     }
 }// end class InflationCalculator
-
