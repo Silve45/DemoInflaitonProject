@@ -7,8 +7,11 @@ public class Main {
         double Cn = 0;
 
         IC.Inflation(sc);
-        Cn = IC.getNumber();
-        System.out.println("and Cn = " + Cn);
+
+        System.out.println("now Investment return");
+        IC.InvestmentReturn(sc);
+
+
 
     }
 }
