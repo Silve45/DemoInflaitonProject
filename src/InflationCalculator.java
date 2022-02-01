@@ -3,20 +3,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InflationCalculator {
-    double number, newnumber, newinumber;
-    double checknumber, checkinumber;
+    double number, newnumber;
+    double checknumber;
     String y = "y";
     String n = "n";
 
     ArrayList<Double> investmentNum = new ArrayList<>();
     ArrayList<Double> inflationNum = new ArrayList<>();
 
-
-
-
-    public double getNumber() {
-        return number;
-    }
 
     public void MoneyCalc(Scanner sc){
 
@@ -92,6 +86,8 @@ public class InflationCalculator {
 
         System.out.println("The Inflation is " + finalInflation);
         System.out.println("The Investment is " + finalInvestment);
+        System.out.println("This program is based off of the assumption that you are using the same number and the same years every time. " +
+                "\nFor the final version, implement a way to accurately show the information regardless of number or year");
         System.out.println("So in all this is extra money you will make/lose " + (finalInvestment - finalInflation));
 
 
