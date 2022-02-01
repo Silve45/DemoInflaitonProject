@@ -2,7 +2,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InflationCalculator {
-    double number;
+    double number, newnumber, newinumber;
+    double checknumber, checkinumber;
+
+
 
     public double getNumber() {
         return number;
@@ -10,7 +13,7 @@ public class InflationCalculator {
 
     public void Inflation(Scanner sc){
 
-        double checknumber, newnumber, rate;
+        double  rate;
 
         while (true) {
             try {
@@ -44,7 +47,7 @@ public class InflationCalculator {
 
     public void InvestmentReturn(Scanner sc){
 
-        double checknumber, newnumber, rate;
+        double newnumber, rate;
 
         while (true) {
             try {
@@ -61,11 +64,11 @@ public class InflationCalculator {
 
                 System.out.println("Calculating Investment of number " + number + " with Investment rate of " + rate + " and " + year + " year(s)");
 
-                checknumber = number * rate * year;
-                newnumber = number + checknumber;
+                checkinumber = number * rate * year;
+                newinumber = number + checkinumber;
 
-                System.out.println("The number " + number + " will be worth " + newnumber + " in " + year + " years!");
-
+                System.out.println("The number " + number + " will be worth " + newinumber + " in " + year + " years!");
+                break;
             } catch (InputMismatchException e) {
                 System.out.println("Use a number Bozo... Restart");
                 sc.nextLine();
@@ -79,6 +82,7 @@ public class InflationCalculator {
     }
 
     public void AddAll(){
+        System.out.println("So in all this is extra money you will make/lose " + (checkinumber - checknumber));
 
 
     }

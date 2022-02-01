@@ -11,7 +11,8 @@ public class Main {
         System.out.println("now Investment return");
         IC.InvestmentReturn(sc);
 
-
+        System.out.println("Trying to add all");
+        IC.AddAll();
 
     }
 }
