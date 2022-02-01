@@ -46,7 +46,8 @@ public class InflationCalculator {
                     else if (check.equalsIgnoreCase("if")){
                         System.out.println("Alright using inflation calculator ");
                         newnumber = number - checknumber;
-                        inflationNum.add(newnumber);
+                        Double newAddNumber = number + checknumber;
+                        inflationNum.add(newAddNumber);
 
                         break;
                     }
@@ -70,9 +71,7 @@ public class InflationCalculator {
     }
 
 
-    public void TaxRate(){
 
-    }
 
     public void AddAll(){
         double finalInflation = 0, finalInvestment= 0;
@@ -84,12 +83,20 @@ public class InflationCalculator {
             finalInvestment = finalInvestment + investmentNum.get(i);
         }
 
+        finalInflation *= -1;
         System.out.println("The Inflation is " + finalInflation);
+
         System.out.println("The Investment is " + finalInvestment);
-        System.out.println("This program is based off of the assumption that you are using the same number and the same years every time. " +
+
+        System.out.println("\nThis program is based off of the assumption that you are using the same number and the same years every time. " +
                 "\nFor the final version, implement a way to accurately show the information regardless of number or year");
-        System.out.println("So in all this is extra money you will make/lose " + (finalInvestment - finalInflation));
+        System.out.println("So in all this is extra money you will make/lose " + (finalInvestment + finalInflation));
 
 
     }
-}
+
+    public void TaxRate(){
+
+    }
+}// end class InflationCalculator
+
