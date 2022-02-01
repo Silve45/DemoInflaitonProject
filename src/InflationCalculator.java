@@ -1,9 +1,16 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InflationCalculator {
     double number, newnumber, newinumber;
     double checknumber, checkinumber;
+    String y = "y";
+    String n = "n";
+
+    ArrayList<Double> investmentNum = new ArrayList<>();
+    ArrayList<Double> inflationNum = new ArrayList<>();
+
 
 
 
@@ -11,7 +18,7 @@ public class InflationCalculator {
         return number;
     }
 
-    public void Inflation(Scanner sc){
+    public void MoneyCalc(Scanner sc){
 
         double  rate;
 
@@ -20,18 +27,41 @@ public class InflationCalculator {
 
                 System.out.println("Print base number");
 
+
                 number = sc.nextDouble();
-                System.out.println("Print Inflation Rate (print it in percent form, program will translate into decimal form)");
+                System.out.println("Print percent Rate (print it in percent form, program will translate into decimal form)");
                 rate = sc.nextDouble();
                 rate = rate * .01;
 
                 System.out.println("How many years");
                 int year = sc.nextInt();
 
-                System.out.println("Calculating Inflation of number " + number + " with inflation rate of " + rate + " and " + year + " year(s)");
+                System.out.println("Calculating inflation/investment of number " + number + " with percent rate of " + rate + " and " + year + " year(s)");
 
                 checknumber = number * rate * year;
-                newnumber = number - checknumber;
+
+                System.out.println("Is this for investment or inflation? (IV) or (IF)");
+                String check = sc.next();
+                while (true){
+                    if (check.equalsIgnoreCase("iv")){
+                        System.out.println("Alright using investment calculator");
+                        newnumber = number + checknumber;
+                        investmentNum.add(newnumber);
+                        break;
+                    }
+                    else if (check.equalsIgnoreCase("if")){
+                        System.out.println("Alright using inflation calculator ");
+                        newnumber = number - checknumber;
+                        inflationNum.add(newnumber);
+
+                        break;
+                    }
+                    else {
+                        System.out.println("Please use (IV) or (IF). Do not use parentheses");
+                    }
+                }
+
+
 
                 System.out.println("The number " + number + " will be worth " + newnumber + " in " + year + " years!");
                 break;
@@ -45,44 +75,24 @@ public class InflationCalculator {
 
     }
 
-    public void InvestmentReturn(Scanner sc){
-
-        double newnumber, rate;
-
-        while (true) {
-            try {
-
-                System.out.println("Print base number");
-
-                number = sc.nextDouble();
-                System.out.println("Print Investment Rate (print it in percent form, program will translate into decimal form)");
-                rate = sc.nextDouble();
-                rate = rate * .01;
-
-                System.out.println("How many years");
-                int year = sc.nextInt();
-
-                System.out.println("Calculating Investment of number " + number + " with Investment rate of " + rate + " and " + year + " year(s)");
-
-                checkinumber = number * rate * year;
-                newinumber = number + checkinumber;
-
-                System.out.println("The number " + number + " will be worth " + newinumber + " in " + year + " years!");
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Use a number Bozo... Restart");
-                sc.nextLine();
-
-            }
-        }
-    }
 
     public void TaxRate(){
 
     }
 
     public void AddAll(){
-        System.out.println("So in all this is extra money you will make/lose " + (checkinumber - checknumber));
+        double finalInflation = 0, finalInvestment= 0;
+        for (int i = 0; i < inflationNum.size(); i++){
+            finalInflation = finalInflation + inflationNum.get(i);
+        }
+
+        for (int i = 0; i < investmentNum.size(); i++){
+            finalInvestment = finalInvestment + investmentNum.get(i);
+        }
+
+        System.out.println("The Inflation is " + finalInflation);
+        System.out.println("The Investment is " + finalInvestment);
+        System.out.println("So in all this is extra money you will make/lose " + (finalInvestment - finalInflation));
 
 
     }
